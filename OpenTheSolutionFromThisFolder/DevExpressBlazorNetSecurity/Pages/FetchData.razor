@@ -1,0 +1,42 @@
+﻿@page "/fetchdata"
+
+@using DevExpressBlazorNetSecurity.Data
+@inject WeatherForecastService ForecastService
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>FullName</th>
+                <th>Department</th> 
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.FullName</td>
+                    <td>@forecast.Department?.Title</td> 
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private BusinessObjectsLibrary.EFCore.BusinessObjects.Employee[] forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+}

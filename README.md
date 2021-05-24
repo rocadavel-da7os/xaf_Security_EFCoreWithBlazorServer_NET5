@@ -5,4 +5,4 @@ First of all, theres a complete sample wich uses XAF Security, Blazor Server alo
 
 Following the youtube video and comparing the results with the complete sample, we can conclude the video covers only the very basics... (not even the login is in it)
 
-
+# NOTE: Run DatabaseUpdater > Program.cs to create the database
